@@ -17,10 +17,25 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2022 Dec 02
+
+* Create Mongo Cloud account
+* Get Free MondoDB Cluster Link
+* Install mongoose
+* Connect to MongoDB Cloud in App
+* Create Post model
+* Create API Router
+* Create Post Controller
+
+### 2022 Dec 01
+
+* Init npm project
+* Init Git
+* Install express
+
 ### 2022 Nov 30
 
 * Set up virtual machine on ubuntu 18.4
 * Set up SSH
-* Set up VSCode
+* Install VSCode
 * Set up SSH Keys
-* Init npm project
