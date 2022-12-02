@@ -1,4 +1,4 @@
-# Junior Fullstack App Design Blog
+# Fullstack App Design Blog
 
 This is a place where i study modern fullstack app design and build and app named "Works App 2.0" and make this process public.
 
