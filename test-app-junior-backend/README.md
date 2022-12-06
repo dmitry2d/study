@@ -17,6 +17,13 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2022 Dec 06
+
+* Finish Post Controller CRUD Methods (Create, Read, Update, Delete)
+* Create new abstraction level - Post Service
+* Move database logic from Post Controller to Post Service
+* Install express-fileupload
+
 ### 2022 Dec 02
 
 * Create Mongo Cloud account

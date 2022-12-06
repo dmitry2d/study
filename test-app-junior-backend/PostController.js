@@ -1,18 +1,49 @@
-
-import Post from "./Post.js";
+import PostService from "./PostService.js";
 
 class PostController {
 
-    async create (res, req) {
+    async create (req, res) {
         try {
-            const {author, title, content, picture} = req.body
-            const post = await Post.create ({author, title, content, picture})
-            res.json (post)
+            console.log(req.files)
+            const post = await PostService.create (req.body)
+            res.json(post)
         } catch (error) {
-            res.status(500).json({error})
+            res.status(500).json({message: error.message})
+        }
+    }
+    async getAll (req, res) {
+        try {
+            const posts = await PostService.getAll()
+            res.json(posts)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+    async getOne (req, res) {
+        try {
+            const post = await PostService.getOne(req.params.id)
+            res.json(post)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+    async update (req, res) {
+        try {
+            const updatedPost = await PostService.update(req.body)
+            res.json(updatedPost)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
+    async delete (req, res) {
+        try {
+            const post = await PostService.delete(req.params.id)
+            res.json(post)
+        } catch (error) {
+            res.status(500).json({message: error.message})
         }
     }
 
 }
 
-export default new PostController ();
+export default new PostController ()
