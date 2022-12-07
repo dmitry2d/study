@@ -13,3 +13,5 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 ## Blog
 
 ### 2022 Dec 07
+
+* Start this App & README.md
