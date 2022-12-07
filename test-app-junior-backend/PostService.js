@@ -3,7 +3,7 @@ import Post from "./Post.js";
 
 class PostService {
 
-    async create (post) {
+    async create (pos, picture) {
         const createdPost = await Post.create (post)
         return createdPost;
     }
