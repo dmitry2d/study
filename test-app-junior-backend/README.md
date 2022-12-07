@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 * Create Post with uploaded picture
 * Set File Access using express.static
 
-** App is ready to use **
+**App is ready to use**
 
 ### 2022 Dec 06
 
