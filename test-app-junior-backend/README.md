@@ -17,6 +17,14 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2022 Dec 07
+
+* Create File Upload service
+* Create Post with uploaded picture
+* Set File Access using express.static
+
+** App is ready to use **
+
 ### 2022 Dec 06
 
 * Finish Post Controller CRUD Methods (Create, Read, Update, Delete)
