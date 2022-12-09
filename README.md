@@ -19,5 +19,5 @@ This repo contains:
 * Test / Study Apps and modules
 * Blog
 * App Docs
-* Works 2.0 App code
+* Works 2.0 App code 
 

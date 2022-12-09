@@ -22,9 +22,6 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 * Set up .production.env and .development.env
 * Create Users Database Model
 
-
-
-
 ### 2022 Dec 07
 
 * Start this App & README.md
