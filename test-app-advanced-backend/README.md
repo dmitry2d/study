@@ -12,6 +12,10 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2022 Dec 24
+
+* Install @nestjs/swagger swagger-ui-express
+
 ### 2022 Dec 08
 
 * Install postgreSQL (https://www.postgresql.org/download/linux/ubuntu/)
