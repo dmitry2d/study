@@ -12,6 +12,14 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2022 Dec 27
+
+* 
+
+### 2022 Dec 26
+
+* Complete swagger docs for /user methods
+
 ### 2022 Dec 24
 
 * Install @nestjs/swagger swagger-ui-express
