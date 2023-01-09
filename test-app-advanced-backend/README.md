@@ -12,7 +12,13 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
-### 2023 Yan 06
+### 2023 Yan 09
+
+* Authentication
+* Install @netsjs/jwt
+* Install bcryptjs
+* Login / Register Module
+* Guards begin
 
 ### 2022 Dec 27
 
@@ -20,11 +26,12 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ### 2022 Dec 26
 
-* Complete swagger docs for /user methods
+* Swagger
+* API docs
 
 ### 2022 Dec 24
 
-* Install @nestjs/swagger swagger-ui-express
+* @nestjs/swagger swagger-ui-express
 
 ### 2022 Dec 08
 
