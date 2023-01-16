@@ -6,7 +6,7 @@ import * as uuid from 'uuid';
 @Injectable()
 export class FilesService {
 
-    createFile(file): Promise<string> {
+    async createFile(file): Promise<string> {
 
         try {
             const fileName = uuid.v4() + '.jpg'
@@ -15,11 +15,11 @@ export class FilesService {
                 fs.mkdirSync(filePath, {recursive: true})
             }
             fs.writeFileSync(path.join(filePath, fileName), file.buffer)
+            return fileName
         } catch (error) {
             throw new HttpException('File upload error', HttpStatus.INTERNAL_SERVER_ERROR)
         }
 
-        return
 
     }
 
