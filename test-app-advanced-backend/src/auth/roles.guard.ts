@@ -1,8 +1,7 @@
-import { CanActivate, ExecutionContext, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common";
+import { CanActivate, ExecutionContext, HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { JwtService } from "@nestjs/jwt";
 import { Observable } from "rxjs";
-import { runInThisContext } from "vm";
 import { ROLES_KEY } from "./roles-auth.decorator";
 
 @Injectable()

@@ -1,7 +1,6 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, UsePipes } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { AddRoleDto } from 'src/auth/dto/add-role.dto';
-import { jwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { AddRoleDto } from 'src/users/dto/add-role.dto';
 import { Roles } from 'src/auth/roles-auth.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { BanUserDto } from './dto/ban-user.dto';

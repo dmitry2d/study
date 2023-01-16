@@ -12,6 +12,10 @@ https://www.youtube.com/watch?v=tKM44vPHU0U&t=97s
 
 ## Blog
 
+### 2023 Yan 11
+
+* Pipes/Validation
+
 ### 2023 Yan 10
 
 * Guards by Roles
