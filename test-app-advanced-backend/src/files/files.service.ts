@@ -20,7 +20,6 @@ export class FilesService {
             throw new HttpException('File upload error', HttpStatus.INTERNAL_SERVER_ERROR)
         }
 
-
     }
 
 }

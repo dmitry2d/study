@@ -1,6 +1,22 @@
-# Fullstack App Code and Blog
+# "Works" App Code and Blog
 
-This is a place where i study modern fullstack app design and build and app named "Works App 2.0" and make this process public.
+This is a Blog of studying and building an Application named "Works 2.0"
+
+## About myself
+
+I am a programmer and a graphic designer
+
+## My skills so far
+
+- ID / Site Design / Photoshop / Figma - Senior
+- HTML / CSS / LESS / JS / PHP / NodeJS / Wordpress / MongoDB - Junior
+
+## Skills to get
+
+- NodeJS / Express / NestJS
+- VueJS / Vuex etc.
+- React ?
+- Postgress / Mongo
 
 ## About App
 
