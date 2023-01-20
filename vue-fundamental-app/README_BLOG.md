@@ -20,3 +20,5 @@
 
 * Install Vue CLI
 * Create basic project
+* Install chrome vue dev tools extension
+
