@@ -17,11 +17,12 @@
 
 #### 2023 Yan 20
 
-* 
+* Pront Posts (v-for)
+* Input Bindings (v-model)
 
 #### 2023 Yan 20
 
 * Install Vue CLI
-* Create basic project
-* Install chrome vue dev tools extension
+* Create basic Project
+* Install "Vue Dev Tools" Chrome Extension
 
