@@ -3,8 +3,8 @@
 <template>
     <div>Likes: {{ likes }}</div>
     <div>Dislikes: {{ dislikes }}</div>
-    <button v-on:click="addLike">Like</button>
-    <button v-on:click="addDislike">Dislike</button>
+    <button @click="addLike">Like</button>
+    <button @click="addDislike">Dislike</button>
 </template>
 
 <script>
@@ -29,7 +29,7 @@ export default {
 <style>
 
 html {
-    font-size: 16px;
+    font-size: 16;
 }
 * {
     margin: 0;
