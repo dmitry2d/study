@@ -13,12 +13,19 @@
             type="text"
             placeholder="Description"
         >
-        <button class="button" @click="createPost">Create</button>
+        <my-button
+            @click="createPost"
+            style="align-self: flex-end;"
+        >Create</my-button>
     </form>
 </template>
 
 <script>
+    import MyButton from './UI/MyButton.vue'
     export default {
+        components: {
+            MyButton
+        },
         data() {
             return {
                 post: {
@@ -59,12 +66,5 @@
     .input:focus {
         border: 1px solid #3ba776;
     }
-    .button {
-        padding: .5rem 1em;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 1rem;
-        margin-top: .5rem;
-        font: 1em/1.3em 'Source Code Pro', monospace;
-    }
+
 </style>
