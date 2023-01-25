@@ -15,9 +15,16 @@
 
 ## Blog
 
+#### Yan 23-24
+
+* Decomposition
+* Component Data Exchange (custom $events)
+* UI Library
+* Global Components
+
 #### 2023 Yan 20
 
-* Pront Posts (v-for)
+* Print Posts (v-for)
 * Input Bindings (v-model)
 
 #### 2023 Yan 20

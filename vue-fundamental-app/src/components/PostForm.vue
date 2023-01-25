@@ -1,21 +1,17 @@
 <template>
     <form class="form" @submit.prevent>
         <h4>New Post</h4>
-        <input 
+        <my-input 
             v-model="post.title"
-            class="input"
-            type="text"
             placeholder="Title"
-            >
-            <input
+            />
+        <my-input
             v-model="post.body"
-            class="input"
-            type="text"
             placeholder="Description"
-        >
+        />
         <my-button
             @click="createPost"
-            style="align-self: flex-end;"
+            style="align-self: flex-end"
         >Create</my-button>
     </form>
 </template>
@@ -51,16 +47,4 @@
         display: flex;
         flex-direction: column;
     }
-    .input {
-        padding: .5rem 1em;
-        margin-top: .5rem;
-        border: 1px solid #ddd;
-        border-radius: 1rem;
-        font: 1em/1.3em 'Source Code Pro', monospace;
-        outline: none;
-    }
-    .input:focus {
-        border: 1px solid #3ba776;
-    }
-
 </style>
