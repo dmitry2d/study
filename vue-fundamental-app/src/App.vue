@@ -1,17 +1,30 @@
 
 <template>
     <div class="app">
-        <post-form @create="createPost"/>
+        <h4>Posts</h4>
+        <div class="app__buttons">
+            <my-button @click="showDialog">Add Post</my-button>
+            <my-select
+                v-model="selectedSort"
+                :options="selectedSortOptions"
+            ></my-select>
+        </div>
+        <my-dialog v-model:display="dialogVisible">
+            <post-form @create="createPost"/>
+        </my-dialog>
         <post-list
-            :posts="posts"
+            :posts="sortedPosts"
             @remove="removePost"
+            v-if="!postsLoading"
         />
+        <div v-else style="padding-top: 1.5rem">Loading posts...</div>
     </div>
 </template>
 
 <script>
-import PostList from './components/PostList.vue';
-import PostForm from './components/PostForm.vue';
+import PostList from './components/PostList.vue'
+import PostForm from './components/PostForm.vue'
+import axios from 'axios'
 export default {
     components: {
         PostList,
@@ -19,22 +32,13 @@ export default {
     },
     data() {
         return {
-            posts: [
-                {
-                    id: 1,
-                    title: 'Post about JavaScript',
-                    body: 'JavaScript is a multipurpose programming language'
-                },
-                {
-                    id: 2,
-                    title: 'Post about PHP',
-                    body: 'PHP is an old but famous programming language'
-                },
-                {
-                    id: 3,
-                    title: 'Post about NodeJS',
-                    body: 'NodeJS is a fast and powerful JavaScript Framework'
-                }
+            posts: [],
+            dialogVisible: false,
+            postsLoading: false,
+            selectedSort: '',
+            selectedSortOptions: [
+                {value: 'title', title: 'By Title'},
+                {value: 'body', title: 'By Content'}
             ]
         }
     },
@@ -44,6 +48,29 @@ export default {
         },
         removePost(post) {
             this.posts = this.posts.filter (p=> p.id !== post.id)
+        },
+        showDialog() {
+            this.dialogVisible = true
+        },
+        async fetchPosts() {
+            try {
+                this.postsLoading = true
+                const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+                this.posts = response.data
+            } catch (error) {
+                alert ('fetch error, see console')
+                console.log (error)
+            } finally {
+                this.postsLoading = false
+            }
+        }
+    },
+    mounted() {
+        this.fetchPosts()
+    },
+    computed: {
+        sortedPosts() {
+            return [...this.posts].sort((post1, post2) =>  post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
         }
     }
 }
@@ -62,5 +89,9 @@ export default {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+    .app__buttons {
+        display: flex;
+        justify-content: space-between;
     }
 </style>

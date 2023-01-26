@@ -35,5 +35,6 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+        background: white;
     }
 </style>

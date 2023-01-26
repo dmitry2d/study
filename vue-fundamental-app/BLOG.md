@@ -15,16 +15,30 @@
 
 ## Blog
 
+#### Yan 26
+
+* v-model Modifiers
+* Fetching Data
+* Axios
+* Component Life Cycle / Hooks
+* Watch / Deep watch
+* Computed
+* Animations / Transition groups
+
+#### Yan 25
+
+* Events
+* Conditional Rendering
+
 #### Yan 23-24
 
 * Decomposition
-* Component Data Exchange (custom $events)
 * UI Library
 * Global Components
 
 #### 2023 Yan 20
 
-* Print Posts (v-for)
+* Cycle Render (v-for)
 * Input Bindings (v-model)
 
 #### 2023 Yan 20
