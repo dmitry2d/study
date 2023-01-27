@@ -26,6 +26,7 @@
 <style scoped>
     .dialog {
         position: fixed;
+        z-index: 100000;
         display: flex;
         align-items: center;
         justify-content: center;

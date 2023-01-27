@@ -4,6 +4,10 @@
         <h4>Posts</h4>
         <div class="app__buttons">
             <my-button @click="showDialog">Add Post</my-button>
+            <my-input
+                v-model="searchQuery"
+                placeholder="Search..."
+            ></my-input>
             <my-select
                 v-model="selectedSort"
                 :options="selectedSortOptions"
@@ -13,11 +17,15 @@
             <post-form @create="createPost"/>
         </my-dialog>
         <post-list
-            :posts="sortedPosts"
+            :posts="sortedAndSearchedPosts"
             @remove="removePost"
             v-if="!postsLoading"
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
+        <my-paginator
+            v-model:totalPages="this.totalPages"
+            v-model:currentPage="this.paginationOptions._page"
+        ></my-paginator>
     </div>
 </template>
 
@@ -39,12 +47,19 @@ export default {
             selectedSortOptions: [
                 {value: 'title', title: 'By Title'},
                 {value: 'body', title: 'By Content'}
-            ]
+            ],
+            searchQuery: '',
+            paginationOptions: {
+                _page: 1,
+                _limit: 5
+            },
+            totalPages: 0
         }
     },
     methods: {
         createPost(post) {
             this.posts.push (post)
+            this.dialogVisible = false;
         },
         removePost(post) {
             this.posts = this.posts.filter (p=> p.id !== post.id)
@@ -55,7 +70,12 @@ export default {
         async fetchPosts() {
             try {
                 this.postsLoading = true
-                const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+                const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+                    params: {
+                        ...this.paginationOptions
+                    }
+                })
+                this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
                 this.posts = response.data
             } catch (error) {
                 alert ('fetch error, see console')
@@ -71,6 +91,9 @@ export default {
     computed: {
         sortedPosts() {
             return [...this.posts].sort((post1, post2) =>  post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+        },
+        sortedAndSearchedPosts() {
+            return this.sortedPosts.filter(post => post.title.includes(this.searchQuery))
         }
     }
 }
