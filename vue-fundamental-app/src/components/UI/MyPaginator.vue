@@ -1,33 +1,28 @@
 <template>
     <div class="paginator">
+
+        <div class="page visible">1</div>
+        <div class="dots">...</div>
+
         <div
-        class="page__container"
+        class="page"
             v-for="page in totalPages"
             :key="page"
+                    @click="changePage(page)"
+            :class="{
+                'selected': page === this.currentPage,
+                'visible': (                    
+                    page > 1 && page < this.totalPages
+                )
+            }"
         >
-            <div class="dots"
-                :class="{
-                    'visible': false
-                }"
-            >...</div>
-            <div class="page"
-                @click="changePage(page)"
-                :class="{
-                    'selected': page === this.currentPage,
-                    'visible': (                    
-                        page == 1 ||
-                        page == this.totalPages ||
-                        page == this.currentPage ||
-                        (page < 5 && this.currentPage < 4) ||
-                        (page > this.totalPages - 4 && this.currentPage > this.totalPages - 3) ||
-                        page == this.currentPage + 1 ||
-                        page == this.currentPage - 1
-                    )
-                }"
-            >
-                {{ page }}
-            </div>
+            {{ page }}
         </div>
+
+
+        <div class="dots">...</div>
+        <div class="page visible">{{ this.totalPages }}</div>
+
 </div>
 </template>
 
@@ -61,9 +56,6 @@
         justify-content: center;
         padding: 2rem 0;
     }
-    .page__container {
-        display: flex;
-    }
     .page {
         --bg: #f0f0f0;
         padding: 0.5rem 1rem;
@@ -83,15 +75,6 @@
         pointer-events: none;
     }
     .page.visible {
-        display: block;
-    }
-    .dots {
-        padding: 0.5rem 1rem;
-        margin: 0.1rem;
-        color: #aaa;
-        display: none;
-    }
-    .dots.visible {
         display: block;
     }
 

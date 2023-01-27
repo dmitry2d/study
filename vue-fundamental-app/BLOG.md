@@ -17,7 +17,8 @@
 
 #### Yan 27
 
-
+* Axios / Paging
+* Pagination
 
 #### Yan 26
 
