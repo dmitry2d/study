@@ -15,6 +15,11 @@
 
 ## Blog
 
+#### Yan 30
+
+* Custom Pagination
+* Web Intersection API
+
 #### Yan 27
 
 * Axios / Paging
