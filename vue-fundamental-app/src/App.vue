@@ -51,7 +51,7 @@ export default {
             searchQuery: '',
             paginationOptions: {
                 _page: 1,
-                _limit: 5
+                _limit: 4
             },
             totalPages: 0
         }
@@ -94,6 +94,15 @@ export default {
         },
         sortedAndSearchedPosts() {
             return this.sortedPosts.filter(post => post.title.includes(this.searchQuery))
+        },
+        currentPage() {
+            return this.paginationOptions._page
+        }
+    },
+    watch: {
+        currentPage() {
+            console.log (this.currentPage)
+            this.fetchPosts()
         }
     }
 }

@@ -1,27 +1,69 @@
+<!--
+    Paginator component
+    V1.0, with no Settings
+    TODO: Settings
+-->
+
 <template>
     <div class="paginator">
 
-        <div class="page visible">1</div>
-        <div class="dots">...</div>
-
+        <!-- Previous Page -->
         <div
-        class="page"
-            v-for="page in totalPages"
-            :key="page"
-                    @click="changePage(page)"
+            class="page"
             :class="{
-                'selected': page === this.currentPage,
-                'visible': (                    
-                    page > 1 && page < this.totalPages
-                )
+                'inactive': this.currentPage === 1
             }"
+            @click="navigateTo(currentPage - 1)"
+
+        >&lt;</div>
+        
+        <!-- First Page -->
+        <div
+            class="page"
+            v-if="currentPage !== 1"
+            @click="navigateTo(1)"
+        
+        >1</div>
+
+        <!-- Dots Before-->
+        <div
+            class="page inactive"
+            v-if="this.currentPage == this.totalPages"
         >
-            {{ page }}
+            ...
+        </div>
+        
+        <!-- Current Page -->
+        <div
+            class="page current"
+        >
+            {{ this.currentPage }}
         </div>
 
-
-        <div class="dots">...</div>
-        <div class="page visible">{{ this.totalPages }}</div>
+        <!-- Dots After-->
+        <div
+            class="page inactive"
+            v-if="this.currentPage == 1"
+        >
+            ...
+        </div>
+        
+        <!-- Last Page -->
+        <div class="page"
+            v-if="currentPage !== totalPages"
+            @click="navigateTo(totalPages)"
+        >
+            {{ this.totalPages }}
+        </div>
+        
+        <!-- Next Page -->
+        <div
+            class="page"
+            :class="{
+                'inactive': this.currentPage === this.totalPages
+            }"
+            @click="navigateTo(currentPage + 1)"
+        >&gt;</div>
 
 </div>
 </template>
@@ -41,9 +83,8 @@
         },
         data() {},
         methods: {
-            changePage(page) {
-                console.log (page)
-                this.$emit('update:currentPage', page)
+            navigateTo(pageNumber) {
+                this.$emit('update:currentPage', pageNumber)
             }
         }
     }
@@ -57,25 +98,23 @@
         padding: 2rem 0;
     }
     .page {
-        --bg: #f0f0f0;
-        padding: 0.5rem 1rem;
-        margin: 0.1rem;
-        background: var(--bg);
-        border-radius: 1rem;
-        border: 2px solid  var(--bg);
-        color: #aaa;
         cursor: pointer;
-        display: none;
+        width: 3em;
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem 1rem;
     }
-    .page.selected {
-        background: white;
-        border: 2px solid  #3ba776;
-        color: inherit;
-        cursor: auto;
+    .inactive {
         pointer-events: none;
+        cursor: initial;
+        opacity: 0.5;
     }
-    .page.visible {
-        display: block;
+    .current {
+        pointer-events: none;
+        cursor: initial;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 2rem;
     }
+
 
 </style>
