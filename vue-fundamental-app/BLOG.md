@@ -21,6 +21,9 @@
 
 * Infinite pagination
 * Routes
+* Dynamic Routes
+* User Directives
+
 
 #### Yan 30
 

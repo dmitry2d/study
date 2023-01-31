@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Welcome</h1>
+        <h1>Post with ID = {{ $route.params.id }}</h1>
     </div>
 </template>
 
@@ -11,4 +11,5 @@
 </script>
 
 <style scoped>
+
 </style>

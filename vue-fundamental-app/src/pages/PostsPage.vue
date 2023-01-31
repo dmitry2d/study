@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <h4>Posts</h4>
+        <h1>Posts</h1>
         <div class="app__buttons">
             <my-button @click="showDialog">Add Post</my-button>
             <my-input
@@ -22,7 +22,8 @@
             v-if="!postsLoading"
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
-        <div ref="observer" class="observer"></div>
+        <div v-intersection="{hello:true}" class="observer"></div>
+        <!-- <div ref="observer" class="observer"></div> -->
         <!-- <my-paginator
             v-model:totalPages="this.totalPages"
             v-model:currentPage="this.paginationOptions._page"
@@ -68,23 +69,23 @@ export default {
         showDialog() {
             this.dialogVisible = true
         },
-        async fetchPosts() {
-            try {
-                this.postsLoading = true
-                const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-                    params: {
-                        ...this.paginationOptions
-                    }
-                })
-                this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
-                this.posts = response.data
-            } catch (error) {
-                alert ('fetch error, see console')
-                console.log (error)
-            } finally {
-                this.postsLoading = false
-            }
-        },
+        // async fetchPosts() {
+        //     try {
+        //         this.postsLoading = true
+        //         const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+        //             params: {
+        //                 ...this.paginationOptions
+        //             }
+        //         })
+        //         this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
+        //         this.posts = response.data
+        //     } catch (error) {
+        //         alert ('fetch error, see console')
+        //         console.log (error)
+        //     } finally {
+        //         this.postsLoading = false
+        //     }
+        // },
         async loadMorePosts() {
             try {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
@@ -101,36 +102,36 @@ export default {
             }
         },
         observerStart () {
-            const options = {
-                rootMargin: '0px',
-                threshold: 1
-            }
-            this.observer = new IntersectionObserver((entries) => {
-                if (
-                    entries[0].isIntersecting &&
-                    (this.paginationOptions._page < this.totalPages || !this.totalPages)
-                ){
-                    this.loadMorePosts()
-                }
-            }, options);
+            // const options = {
+            //     rootMargin: '0px',
+            //     threshold: 1
+            // }
+            // this.observer = new IntersectionObserver((entries) => {
+            //     if (
+            //         entries[0].isIntersecting &&
+            //         (this.paginationOptions._page < this.totalPages || !this.totalPages)
+            //     ){
+            //         this.loadMorePosts()
+            //     }
+            // }, options);
         },
         observerManage () {
-            try {
-                this.observer.unobserve(this.$refs.observer)
-                this.observer.observe(this.$refs.observer)
-            } catch (error) {
-                console.log ()
-            } finally {
-                setTimeout(() => {
-                    this.observerManage()
-                }, 5000)
-            }
+            // try {
+            //     this.observer.unobserve(this.$refs.observer)
+            //     this.observer.observe(this.$refs.observer)
+            // } catch (error) {
+            //     console.log ()
+            // } finally {
+            //     setTimeout(() => {
+            //         this.observerManage()
+            //     }, 5000)
+            // }
         },
 
     },
     mounted() {
-        this.observerStart()
-        this.observerManage()
+        // this.observerStart()
+        // this.observerManage()
     },
     computed: {
         sortedPosts() {
