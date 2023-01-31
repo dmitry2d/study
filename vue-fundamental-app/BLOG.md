@@ -12,8 +12,15 @@
 
 * Platform: Ubuntu 18.4
 * Engine: NodeJS
+* Frontend Framework: Vue.js
+
 
 ## Blog
+
+#### Yan 31
+
+* Infinite pagination
+* Routes
 
 #### Yan 30
 

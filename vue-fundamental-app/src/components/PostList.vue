@@ -11,7 +11,6 @@
             />
         </transition-group>
     </div>
-
 </template>
 
 <script>
