@@ -23,11 +23,6 @@
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
         <div v-intersection="{hello:true}" class="observer"></div>
-        <!-- <div ref="observer" class="observer"></div> -->
-        <!-- <my-paginator
-            v-model:totalPages="this.totalPages"
-            v-model:currentPage="this.paginationOptions._page"
-        ></my-paginator> -->
     </div>
 </template>
 
