@@ -22,12 +22,10 @@
             v-if="!postsLoading"
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
-        <div v-intersection="{hello:true}" class="observer"></div>
-        <!-- <div ref="observer" class="observer"></div> -->
-        <!-- <my-paginator
+        <my-paginator
             v-model:totalPages="this.totalPages"
             v-model:currentPage="this.paginationOptions._page"
-        ></my-paginator> -->
+        ></my-paginator>
     </div>
 </template>
 
@@ -69,69 +67,28 @@ export default {
         showDialog() {
             this.dialogVisible = true
         },
-        // async fetchPosts() {
-        //     try {
-        //         this.postsLoading = true
-        //         const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-        //             params: {
-        //                 ...this.paginationOptions
-        //             }
-        //         })
-        //         this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
-        //         this.posts = response.data
-        //     } catch (error) {
-        //         alert ('fetch error, see console')
-        //         console.log (error)
-        //     } finally {
-        //         this.postsLoading = false
-        //     }
-        // },
-        async loadMorePosts() {
+        async fetchPosts() {
             try {
+                this.postsLoading = true
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
                     params: {
                         ...this.paginationOptions
                     }
                 })
                 this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
-                this.posts = [...this.posts, ...response.data]
-                this.paginationOptions._page ++
+                this.posts = response.data
             } catch (error) {
                 alert ('fetch error, see console')
                 console.log (error)
+            } finally {
+                this.postsLoading = false
             }
         },
-        observerStart () {
-            // const options = {
-            //     rootMargin: '0px',
-            //     threshold: 1
-            // }
-            // this.observer = new IntersectionObserver((entries) => {
-            //     if (
-            //         entries[0].isIntersecting &&
-            //         (this.paginationOptions._page < this.totalPages || !this.totalPages)
-            //     ){
-            //         this.loadMorePosts()
-            //     }
-            // }, options);
-        },
-        observerManage () {
-            // try {
-            //     this.observer.unobserve(this.$refs.observer)
-            //     this.observer.observe(this.$refs.observer)
-            // } catch (error) {
-            //     console.log ()
-            // } finally {
-            //     setTimeout(() => {
-            //         this.observerManage()
-            //     }, 5000)
-            // }
-        },
+        
 
     },
     mounted() {
-        // this.observerStart()
-        // this.observerManage()
+        this.fetchPosts()
     },
     computed: {
         sortedPosts() {
@@ -140,15 +97,14 @@ export default {
         sortedAndSearchedPosts() {
             return this.sortedPosts.filter(post => post.title.includes(this.searchQuery))
         },
-        // currentPage() {
-        //     return this.paginationOptions._page
-        // }
+        currentPage() {
+            return this.paginationOptions._page
+        }
     },
     watch: {
-        // currentPage() {
-            // console.log (this.currentPage)
-            // this.fetchPosts()
-        // }
+        currentPage() {
+            this.fetchPosts()
+        }
     }
 }
 </script>
@@ -157,9 +113,5 @@ export default {
     .app__buttons {
         display: flex;
         justify-content: space-between;
-    }
-    .observer {
-        height: 2rem;
-        background-color: aquamarine;
     }
 </style>
