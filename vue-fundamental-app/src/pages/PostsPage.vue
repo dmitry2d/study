@@ -22,7 +22,7 @@
             v-if="!postsLoading"
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
-        <div v-intersection="{hello:true}" class="observer"></div>
+        <div v-intersection="loadMorePosts" class="observer"></div>
     </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
             searchQuery: '',
             paginationOptions: {
                 _page: 1,
-                _limit: 4
+                _limit: 3
             },
             totalPages: 0
         }
@@ -64,24 +64,10 @@ export default {
         showDialog() {
             this.dialogVisible = true
         },
-        // async fetchPosts() {
-        //     try {
-        //         this.postsLoading = true
-        //         const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-        //             params: {
-        //                 ...this.paginationOptions
-        //             }
-        //         })
-        //         this.totalPages = Math.ceil(response.headers['x-total-count'] / this.paginationOptions._limit)
-        //         this.posts = response.data
-        //     } catch (error) {
-        //         alert ('fetch error, see console')
-        //         console.log (error)
-        //     } finally {
-        //         this.postsLoading = false
-        //     }
-        // },
         async loadMorePosts() {
+            if (this.totalPages && this.paginationOptions._page >= this.totalPages) {
+                return
+            }
             try {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
                     params: {
@@ -95,38 +81,8 @@ export default {
                 alert ('fetch error, see console')
                 console.log (error)
             }
-        },
-        observerStart () {
-            // const options = {
-            //     rootMargin: '0px',
-            //     threshold: 1
-            // }
-            // this.observer = new IntersectionObserver((entries) => {
-            //     if (
-            //         entries[0].isIntersecting &&
-            //         (this.paginationOptions._page < this.totalPages || !this.totalPages)
-            //     ){
-            //         this.loadMorePosts()
-            //     }
-            // }, options);
-        },
-        observerManage () {
-            // try {
-            //     this.observer.unobserve(this.$refs.observer)
-            //     this.observer.observe(this.$refs.observer)
-            // } catch (error) {
-            //     console.log ()
-            // } finally {
-            //     setTimeout(() => {
-            //         this.observerManage()
-            //     }, 5000)
-            // }
-        },
+        }
 
-    },
-    mounted() {
-        // this.observerStart()
-        // this.observerManage()
     },
     computed: {
         sortedPosts() {
@@ -134,16 +90,7 @@ export default {
         },
         sortedAndSearchedPosts() {
             return this.sortedPosts.filter(post => post.title.includes(this.searchQuery))
-        },
-        // currentPage() {
-        //     return this.paginationOptions._page
-        // }
-    },
-    watch: {
-        // currentPage() {
-            // console.log (this.currentPage)
-            // this.fetchPosts()
-        // }
+        }
     }
 }
 </script>
@@ -155,6 +102,6 @@ export default {
     }
     .observer {
         height: 2rem;
-        background-color: aquamarine;
+        background-color: rgba(0,0,0,0.02);
     }
 </style>

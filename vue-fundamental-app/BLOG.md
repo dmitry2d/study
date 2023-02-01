@@ -17,13 +17,16 @@
 
 ## Blog
 
+#### **Feb** 02
+
+* User Directives
+* New Branch
+
 #### Yan 31
 
 * Infinite pagination
 * Routes
 * Dynamic Routes
-* User Directives
-
 
 #### Yan 30
 
