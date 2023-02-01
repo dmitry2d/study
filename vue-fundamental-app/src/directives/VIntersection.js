@@ -1,27 +1,43 @@
+/*
+    VIntersection Vue 3 Directive Code File
+    
+    Fires Callback if DOM Node is visible (periodically) or intersects window (immediately)
+    Using:
+    <div
+        v-intersection="{watchDelay=<ms>, callback=<Callback>}"
+    ></div>
+ */
+
 export default {
     name: 'intersection',
     mounted(element, binding) {
+
+        const watchDefaultDelay = 2000
+
+        // Using IntersectionObserver API to detect intersections
         const options = {
             rootMargin: '0px',
             threshold: 1
         }
-        binding.observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting){
-                binding.value()
+                binding.value?.callback()
             }
         }, options);
-        binding.watcher = () => {
+
+        // Periodically reset Observer to detect visibility
+        const watcher = () => {
             try {
-                binding.observer.unobserve(element)
-                binding.observer.observe(element)
+                observer.unobserve(element)
+                observer.observe(element)
             } catch (error) {
                 console.log ()
             } finally {
                 setTimeout(() => {
-                    binding.watcher()
-                }, 2000)
+                    watcher()
+                }, binding.value?.watchDelay || watchDefaultDelay)
             }
         }
-        binding.watcher()
+        watcher()
     }
 }

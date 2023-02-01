@@ -22,7 +22,7 @@
             v-if="!postsLoading"
         />
         <div v-else style="padding-top: 1.5rem">Loading posts...</div>
-        <div v-intersection="loadMorePosts" class="observer"></div>
+        <div v-intersection="{watchDelay: 2000, callback: loadMorePosts}" class="observer"></div>
     </div>
 </template>
 
@@ -50,7 +50,8 @@ export default {
                 _page: 1,
                 _limit: 3
             },
-            totalPages: 0
+            totalPages: 0,
+            postsAreLoading: false
         }
     },
     methods: {
@@ -65,10 +66,14 @@ export default {
             this.dialogVisible = true
         },
         async loadMorePosts() {
-            if (this.totalPages && this.paginationOptions._page >= this.totalPages) {
+            if (this.postsAreLoading) {
+                return
+            }
+            if (this.totalPages > 0 && this.paginationOptions._page >= this.totalPages) {
                 return
             }
             try {
+                this.postsAreLoading = true;
                 const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
                     params: {
                         ...this.paginationOptions
@@ -80,6 +85,8 @@ export default {
             } catch (error) {
                 alert ('fetch error, see console')
                 console.log (error)
+            } finally {
+                this.postsAreLoading = false;
             }
         }
 
