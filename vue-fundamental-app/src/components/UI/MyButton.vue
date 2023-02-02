@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import spyMixin from '@/mixins/spyMixin';
+
     export default {
-        name: 'my-button'
+        name: 'my-button',
+        mixins: [spyMixin]
     }
 </script>
 

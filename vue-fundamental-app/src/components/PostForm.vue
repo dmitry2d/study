@@ -12,6 +12,8 @@
         <my-button
             @click="createPost"
             style="align-self: flex-end"
+            :spyName="'Create New Post Accept Button'"
+            :spyEvents="['mouseout']"
         >Create</my-button>
     </form>
 </template>

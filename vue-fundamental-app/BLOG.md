@@ -17,7 +17,11 @@
 
 ## Blog
 
-#### **Feb** 02
+#### Feb 02
+
+* Mixins
+
+#### Feb 01
 
 * User Directives
 * New Branch
