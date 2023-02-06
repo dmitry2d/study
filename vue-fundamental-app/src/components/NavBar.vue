@@ -3,6 +3,8 @@
         <div class="navbar__title">Vue 3 App</div>
         <div class="navbar__buttons">
             <my-button @click="$router.push('/posts')">Posts</my-button>
+            <my-button @click="$router.push('/store')">Store</my-button>
+            <my-button @click="$router.push('/composition')">Composition</my-button>
             <my-button @click="$router.push('/about')">About</my-button>
         </div>
     </div>

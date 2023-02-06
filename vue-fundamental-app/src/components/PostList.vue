@@ -1,6 +1,6 @@
 <template>
     <div class="postlist">
-        <h4 v-if="posts.length == 0">No Posts</h4>
+        <h4 v-if="posts.length == 0">No Posts...</h4>
         <h4 v-else>Post List</h4>
         <transition-group name="post-list__transitions">
             <post-item

@@ -17,9 +17,15 @@
 
 ## Blog
 
+#### feb 03
+
+* Composition API
+* Finished
+
 #### Feb 02
 
 * Mixins
+* Vuex
 
 #### Feb 01
 
