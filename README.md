@@ -1,39 +1,63 @@
-# "Works" App Code and Blog
+# Learning Modern WEB Programming
 
-This is a Blog of studying and building an Application named "Works 2.0"
-
-## About myself
-
-I am a programmer and a graphic designer
-
-## My skills so far
-
-- ID / Site Design / Photoshop / Figma - Senior
-- HTML / CSS / LESS / JS / PHP / NodeJS / Wordpress / MongoDB - Junior
-
-## Skills to get
-
-- NodeJS / Express / NestJS
-- VueJS / Vuex etc.
-- React ?
-- Postgress / Mongo
-
-## About App
-
-Works App 2.0 is an app for register user tickets, track works done and materials used in waterpipe and sewerage network building and support.
+This is a Blog of studying and building Applications through Modern WEB Programming Lessons and Courses.
 
 ## Goals
 
-* Study backend and frontend design
-* Build production App
-* Raise soft skills: English, oratory, discipline, structure
+Main Goal is to become a modern WEB Programmer
 
-## Contents
+## Skills i have learned
 
-This repo contains:
+### Ubuntu
 
-* Test / Study Apps and modules
-* Blog
-* App Docs
-* Works 2.0 App code 
+* Bash terminal - File system, Priveledges, etc.
+
+### NodeJS
+
+* NPM - Package management
+* N and NVM - Version managment
+* Basic JS Programming
+* PM2 - Daemons
+
+### VSCode
+
+* Addons
+* SSH / FTP Remote
+
+### Nest.js
+
+* Basic API App
+* Routes
+* Models
+* Validation
+* Guards
+
+### Type Script
+
+* Basic knowledge
+
+### Vue JS
+
+* Vue CLI
+* Vue 3 Composition API
+* Components
+* Routes
+* Mixins
+* Hooks
+* Directives
+
+### Express
+
+* Basic API App
+* Routes
+* Services, Controllers
+* File Upload
+
+### PostgreSQL
+
+* PGAdmin4
+* Sequelize
+
+
+
 
